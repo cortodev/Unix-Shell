@@ -16,9 +16,10 @@ begin
 
   begin
     executeAfter ||= ligne
-    executeNow, executeAfter = executeAfter.split('|').map{|cmd| cmd.strip} unless executeAfter.nil?
-    commande, redirection = executeNow.split(%r{<|>}).map{|c| c.strip}
-    p "execute #{commande}"
+    executeNow, executeAfter = executeAfter.split('|', 2).map{|cmd| cmd.strip} unless executeAfter.nil?
+    commande, redirection = executeNow.split(/[<|>]/, 2).map{|c| c.strip}
+    p commande
+    p redirection
     fork do
       filename = 'tmp'
       File.open(filename, File::CREAT|File::WRONLY|File::TRUNC) do |file|
