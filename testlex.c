@@ -23,6 +23,7 @@ int main(int argc, char* argv[]) {
  TOKEN t;
  char w[TAILLE_MAX];
  while ( (t = getToken(w)) != T_EOF ) {
+   printf("%s\n", t);
   printf(" Token : %s", libToken[t]) ;
   if (t==T_WORD)
    printf(", valeur: %s\n", w);
